@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load cart %}
+{% load custom_filter %}
+<html lang="en">
+<style>
+
+</style>
+
+
+
+    <!-- Topbar Start -->
+
+
+
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="/">Головна сторінка</a>
+                    <a class="breadcrumb-item text-dark" href="/store">Товари</a>
+                    <span class="breadcrumb-item active">Деталі</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Shop Detail Start -->
+    <div class="container-fluid pb-5">
+        <div class="row px-xl-5">
+            <div class="col-lg-5 mb-30">
+
+
+                        <div >
+                            <img class="w-100 h-100" src="{{product.image.url}}" alt="Image">
+                        </div>
+
+
+
+            </div>
+
+            <div class="col-lg-7 h-auto mb-30">
+                <div class="h-100 bg-light p-30">
+
+                    <h2>{{product.name}}</h2>
+                    <br>
+                    <div style="margin-left:10px">
+                    <h3 class="font-weight-semi-bold mb-4" style="color: dimgrey">{{product.price}} грн</h3>
+                        <h4 class="mb-3">Опис продукту:</h4>
+                    <p style="margin-right: 250px; " class="mb-4">{{product.description}}</p>
+                        </div>
+                        <br>
+                    <div class="d-flex align-items-center mb-4 pt-2">
+
+
+
+                       <form action="/#" method="POST">
+							{% csrf_token %}
+
+							<input hidden type="text" name='product' value='{{product.id}}'>
+							<input type="submit" style="background: #0093c4; width: 170px; margin-left: 10px" class="float-right btn btn-success form-control"
+								value="Добавити в кошик"> </form>
+
+
+                </div>
+                    <div class="row px-xl-5">
+
+        </div>
+            </div>
+
+        </div>
+              <div class="col">
+                <div class="bg-light p-30">
+                    <div class="nav nav-tabs mb-4">
+                        <a class="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-1">Інформація</a>
+                        <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">Відгуки</a>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="tab-pane-1">
+                            <h4 class="mb-3">Широкий вибір компонентів</h4>
+                            <p>
+Крім зазначених електронних плат, ми пропонуємо вам великий вибір компонентів для макетування електронних схем, символьних та графічних дисплеїв, світлодіоди, датчики, живлення та радіо модулі, різноманітні вимірювальні прилади, генератори, термометри і багато іншого.
+
+Прихильники радіоелектроніки та робототехніки неодмінно знайдуть на нашому сайті товари.
+
+<h3>Радіоелектроніка з доставкою по всій Україні</h3>
+Company – це інтернет-магазин, офіс якого розташований у Львові. Проте, це не заважає нам активно співпрацювати із клієнтами по всій Україні, надсилаючи їм електронні плати, модулі, компоненти і різні види радіоелектроніки. Якщо ж вас цікавлять елементи, яких немає на сайті, ві можете оформити замовлення на їхню доставку. Сміливо звертайтеся до наших менеджерів!</p>
+
+                            У нашому каталозі розміщений великий вибір електронних плат, комп'ютерній ютерів, значний асортимент різноманітних компонентів, стартові набори.
+
+Arduino, наприклад, це обчислювальна платформа, що складається із плати вводу та виводу, середовища розробки, створеного мовою Processing/Wiring. Такі електронні компоненти використовують для того, щоб створювати автономні фрази об'єкти або підключати програмне забезпечення комп'ютера. На основі цієї платформи створюють прилади найрізноманітнішого призначення.
+
+Raspberry Pi – ще один корисний компонент у нашому каталозі. Це персональний комп'ютер, що має мініатюрні розміри і наднизький рівень енергоспоживання. Такі електронні плати використовують для навчання, створення макетів або тестування інтерфейсу.                    </div>
+
+                        <!--REVIW-->
+                        <div class="tab-pane fade" id="tab-pane-2">
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    <h4 class="mb-4">Відгуки про {{product.name}}</h4>
+
+                                        {% for review in reviews %}
+
+                                            <h6>{{review.user}}<small> - <i>RATING: {{review.rating}}</i></small></h6>
+
+                                            <p> {{ review.comment }}</p>
+
+
+
+                                        {% empty %}
+                                        <div class="notification space-below">
+                                     Наразі без відгуків
+                                        </div>
+                                {% endfor %}
+                                </div>
+                                <br>
+
+<div class="col-md-6">
+                                    <h4 class="mb-4">Залиште відгук</h4>
+                                    {% if request.user.is_authenticated %}
+                                             <form method="Post" action="">
+                                                 {% csrf_token %}
+                                    <small>Ваш емейл не буде опубліковано</small>
+                                    <div class="d-flex my-3">
+                                        <p class="mb-0 mr-2">Рейтинг :</p>
+                                        <select name="rating">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3" selected>3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option></select></div><div class="form-group">
+                                            <label>Коментар</label>
+                                            <textarea cols="30" rows="5" class="form-control" name ="comment"></textarea>
+                                            <input type="submit" value="Залиште відгук" class="btn btn-primary px-3">
+                                        </div>
+                                           {% else %}
+                                              <p>Авторизуйтесь, щоб залишити відгук!</p>
+                                            {% endif %}
+
+                                    </form>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    </div>
+
+
+
+    <!-- JavaScript Librari es -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+
+</html>
+
+  {% endblock %}

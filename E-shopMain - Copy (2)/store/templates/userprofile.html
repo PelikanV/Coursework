@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}{{user.username}}'s Profile{% endblock title %}
+
+{% block content %}
+<h2 class="fw-bolder">Hello, <span class="text-primary">{{user.username}}!!</span></h2>
+ <img class="rounded" src="{{user_profile_data.profile_image.url}}" alt="{{user.username}}'s profile image"
+            width="10%" height="10%">
+<div class="card">
+    <div class="card-body text-center">
+        {% if user_profile_data.profile_image %}
+        <img class="rounded" src="{{user_profile_data.profile_image.url}}" alt="{{user.username}}'s profile image"
+            width="10%" height="10%">
+        {% else %}
+        <img class="rounded" src="https://www.w3schools.com/howto/img_avatar.png"
+            alt="{{user.username}}'s profile image" width="10%" height="10%">
+        {% endif %}
+
+        <h3 class="fs-1 fw-bolder mt-3">{{user.first_name}} {{user.last_name}} (@{{user.username}})</h3>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+{% endblock content %}

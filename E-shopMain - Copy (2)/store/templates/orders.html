@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load cart %}
+{% load custom_filter %}
+<div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="/">Home</a>
+                        <span class="breadcrumb-item active">Orders</span>
+                </nav
+            </div>
+        </div>
+    </div>
+<div class="container">
+
+
+   <div class="border rounded p-4 m-4">
+        <h2 class="fw-bolder">Привіт, <span class="text-primary">{{user.username}}!!</span></h2>
+    <img class="rounded" src="https://www.w3schools.com/howto/img_avatar.png"
+            alt="{{user.username}}'s profile image" width="10%" height="10%">
+       <hr>
+        <p class="display-4 pl-3 ml-3">Ваші замовлення</p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>№.</th>
+                    <th>Картинка</th>
+                    <th>Товар</th>
+                    <th>Дата замовлення</th>
+                    <th>Ціна</th>
+                    <th>Кількість</th>
+                    <th>Сумарно</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <body>
+
+                {% for order in orders %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td><img style="height: 80px;" class="rounded-circle" src="{{order.product.image.url}}" alt=""></td>
+                    <td>{{order.product.name}}</td>
+                    <td>{{order.date}}</td>
+                    <td>{{order.price|currency}}</td>
+                    <td>{{order.quantity}}</td>
+                    <td>{{order.quantity|multiply:order.price}}</td>
+                    {% if order.status %}
+                    <td><small class="badge badge-success">Виконано</small></td>
+                    {%else%}
+                    <td><small class="badge badge-warning">Розглядається</small></td>
+                    {% endif %}
+                </tr>
+
+                {% endfor %}
+               
+            </body>
+
+        </table>
+       
+   </div>
+</div>
+
+
+
+
+{% endblock %}

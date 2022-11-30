@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load cart %}
+{% load custom_filter %}
+<!-- body -->
+<style>
+    	.imag{
+
+
+        margin-right: auto;
+          margin-left: auto;
+
+
+	}
+        .card-text{
+            font: inherit;
+            font-size:18px;
+            margin-left:10px;
+            margin-top:12px;
+       vertical-align: baseline;
+        }
+</style>
+<head>
+<meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+
+    </head>
+    <header  style=" background:url('https://rempk.com/!img_repair_good/wide_good.jpg')">
+            <div class="container px-15 px-lg-8 my-10" style="height: 300px;">
+
+                <div class="text-capitalize	 text-white">
+
+                    <h1 class="display-4 fw-bolder " style="font-weight: bold;color: lightskyblue">Company</h1>
+                    <p class="lead fw-normal text-white-50 mb-0" style="font-weight: bold;color:white"> електронні модулі та компоненти</p>
+                </div>
+            </div>
+
+        </header>
+
+<div class="container-fluid mt-3" >
+	<div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="/">Домашня сторінка</a>
+                        <span class="breadcrumb-item active">Магазин</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3 mx-auto">
+			<div class="list-group">
+				<a href="/store" class="list-group-item list-group-item-action btn btn-outline-success">Всі продукти</a>
+				{% for category in categories %}
+				<a href="/store?category={{category.id}}"
+					class="list-group-item list-group-item-action btn btn-outline-success ">{{category.name}}</a>
+				{% endfor %}
+			</div>
+		</div>
+		<!-- all products -->
+		<div id='products' class="col-lg-9 mx-auto">
+			<div class="row mx-auto">
+				{% for product in products %}
+				<div class="card mx-auto mb-3" id={{product.id}} style="width: 14rem;">
+                    <div class  =imag>
+					  <a href="/product/{{product.id}}"><img class="card-img-top" src="{{product.image.url}}" style="height: 170px"></a>
+						<div style="font-weight: bold;text-align: center">
+						<h7 > {{product.name}}</h7>
+						</div>
+                      </div>
+					<div style="text-align: center;font-weight: bold;color: dodgerblue">
+						<p class="card-text">{{product.price}} грн</p>
+					</div>
+					<div class="card-body" >
+						<a href = "/store">
+				<form action="/#" method="POST" class="btn-block">
+							{% csrf_token %}
+							<input hidden type="text" name='product' value='{{product.id}}'>
+							<input type="submit" style="background: #0093c4; position: sticky; bottom:0px" class="float-right btn btn-success form-control"
+								value="Добавити в кошик"> </form></a>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+
+
+{% endblock %}

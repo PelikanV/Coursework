@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <title>E-commerce Website</title>
+
+
+</head>
+
+<body>
+  <!-- navbar -->
+
+<nav class="
+  navbar navbar-light
+  sticky-top navbar 
+  navbar-expand-lg
+  border
+  text-white" style="background: white">
+    <a class="navbar-brand ms-3 text-dark " href="/">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <img src="https://as1.ftcdn.net/v2/jpg/04/06/69/00/1000_F_406690058_3aFL85D8SpbYucvbwW6MOozhM6uu3jLx.jpg    " style="width:50px;height:40px">Company</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/store">Товари <span class="sr-only">(current)</span></a>
+        </li>
+
+
+          </ul>
+
+
+
+
+      <ul class=" navbar-nav my-2 my-lg-0">
+
+
+
+{% if user.is_authenticated%}
+<li class="nav-item active">
+          <a class="nav-link" href="{% url 'cart' %}">Кошик
+            <span class="badge badge-success">{{request.session.cart.keys|length}}</span>
+            <span class="sr-only">(current)</span></a>
+        </li>
+           <li class="nav-item active">
+          <a class="nav-link" href="/orders">Замовлення <span class="sr-only">(current)</span></a>
+        </li>
+
+<li class="nav-item solar-red">
+          <a class="nav-link" href="/logout">Вийти <span class="sr-only">(current)</span></a>
+        </li>
+
+        {% else %}
+        <li class="nav-item active">
+          <a class="nav-link" href="/signup">Зареєструватись <span class="sr-only">(current)</span></a>
+        </li>
+    <li class="nav-item active">
+          <a class="nav-link" href="/login">Увійти <span class="sr-only">(current)</span></a>
+        </li>
+        {% endif %}
+
+
+      </ul>
+
+
+    </div>
+  </nav>
+  {% block content %}
+  {% endblock %}
+<footer class="bg-light text-center text-lg-start">
+
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2022 Copyright:
+    <a class="text-dark" href="/">Company.com</a>
+  </div>
+  <!-- CopFyright -->
+</footer>
+
+
+
+
+</body>
+
+</html>

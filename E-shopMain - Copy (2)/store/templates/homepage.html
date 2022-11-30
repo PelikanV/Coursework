@@ -1,0 +1,208 @@
+    {% extends 'base.html' %}
+
+    {% block content %}
+
+{% load cart %}
+{% load custom_filter %}
+<!-- body -->
+<style>
+
+	.carousel-item{
+		height:32rem;
+		background: #000;
+			color: white;
+
+
+	}
+	.container{
+		position:absolute;
+		bottom: 0;
+		left:100px;
+		right:0;
+		padding-bottom: 50px;
+	}
+		.container1{
+		position:center;
+			margin-top: 15px;
+
+	}
+
+
+	.overlay-image{
+		position:absolute;
+		bottom: 0;
+		left: 0;
+		right:0;
+		top:0;
+		background-position: center;
+		background-size:cover;
+		opacity: 0.7;
+	}
+	/* Center align the text within the three columns below the carousel */
+	.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+        width:30%;
+
+	}
+/* rtl:begin:ignore */
+	.marketing .col-lg-4 p {
+		margin-right: 15%;
+  		margin-left: 15%;
+	}
+/* rtl:end:ignore */
+	.featurette-divider1 {
+  margin: 1rem 0; /* Space out the Bootstrap <hr> more */
+	}
+    	.featurette-divider {
+  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+	}
+    .row{
+        margin-right: 20%;
+        margin-left:20%;
+    }
+
+
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+ .rounded-circle{
+     height: 120px;
+ }
+
+.bd-placeholder-img{
+    height: 150px;
+    border-radius: 50%;
+    width:200px;
+}
+.placeholderfeatleft{
+    margin-right:150px;
+    height: 400px;
+    border-radius: 50%;
+    width:550px;
+}
+.placeholderfeat{
+    height: 400px;
+    border-radius: 50%;
+    width:550px;
+}
+</style>
+<div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+		<div class="overlay-image" style="background-image:url(http://cdn.shopify.com/s/files/1/0176/3274/products/raspberry-pi-3-model-b-raspberry-pi-sc0073-14879273058366.jpg?v=1646249774);">
+		</div>
+		<div class="container">
+		<h1> Raspberry Pi 4 Model B</h1>
+c		<a href="http://127.0.0.1:8000/product/5" class = "btn btn-lg btn-primary":>
+		Перейти до товару
+		</a>
+			</div>
+    </div>
+    <div class="carousel-item">
+		<div class="overlay-image" style="background-image:url(https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Arduino_ftdi_chip-1.jpg/640px-Arduino_ftdi_chip-1.jpg);">
+		</div>
+		<div class="container">
+		<h1> Ethernet shield W5100 для Arduino</h1>
+		<p>Ціна: 540 грн</p>
+		<a href="http://127.0.0.1:8000/product/4" class = "btn btn-lg btn-primary":>
+		Перейти до товару
+		</a>
+			</div>
+    </div>
+    <div class="carousel-item">
+
+		<div class="overlay-image" style="background-image:url(http://cdn.shopify.com/s/files/1/0176/3274/articles/1730-01.jpg?v=1561388213);">
+		</div>
+		<div class="container">
+		<h1>Ширококутна камера для Rasberry Pi</h1>
+		<p>Ціна: 870 грн</p>
+		<a href="http://127.0.0.1:8000/product/9" class = "btn btn-lg btn-primary":>
+		Перейти до товару
+		</a>
+			</div>
+    </div>
+
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+
+  </a>
+</div>
+
+    <hr class="featurette-divider1">
+
+<div class="container1 marketing ">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+          <img class="bd-placeholder-img " src="https://images.prom.ua/517581369_w640_h640_raspberry-pi-3.jpg
+" alt="https://miychay.com/upload/iblock/7c6/7c664063ba5e6215cb3567de3330c187.jpg">
+
+        <h2 class="fw-normal">Raspberry Pi</h2>
+        <p>У нашому інтернет-магазині Company" ви зможете знайте одноплатні комп'ютери Raspberry Pi та набір комплектуючих пристроїв до них.</p>
+        <p><a class="btn btn-secondary" href="http://127.0.0.1:8000/store?category=34">Показати деталі  &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+          <img class="bd-placeholder-img " src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Arduino_ftdi_chip-1.jpg/640px-Arduino_ftdi_chip-1.jpg" alt="https://miychay.com/upload/iblock/7c6/7c664063ba5e6215cb3567de3330c187.jpg">
+
+        <h2 class="fw-normal">Arduino</h2>
+        <p>Також ми продаємо оригінальні контролери Arduino. Ця апаратна обчислювальна платформа стане незамінним помічником при розробці інтерактивних об'єктів.</p>
+        <p><a class="btn btn-secondary" href="http://127.0.0.1:8000/store?category=35">Показати деталі  &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+          <img class="bd-placeholder-img " src="http://hobbytech.com.ua/wp-content/uploads/2018/06/arduino-uno-ardx-kit-001.jpg" alt="https://miychay.com/upload/iblock/7c6/7c664063ba5e6215cb3567de3330c187.jpg">
+
+        <h2 class="fw-normal">Компоненти</h2>
+        <p>Різноманітні електронні компоненти, які ми пропонуємо, допоможуть вам розвиватися в своєму електронною хобі та створювати багато інших домашніх пристроїв власноруч! </p>
+        <p><a class="btn btn-secondary" href="http://127.0.0.1:8000/store?category=33">Показати деталі &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+ <!-- START THE FEATURETTES -->
+
+
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">Про нас <span class="text-muted">Company</span></h2>
+        <p class="lead">Company – електронні модулі та компоненти
+Не залежно від того, чи вважаєте ви себе досвідченим знавцем у сфері радіоелектроніки та комп'ютерів, а чи скромним радіоаматором, ми однаково раді привітати вас на нашому сайті. Наш онлайн-магазин займається розповсюдженням електронних плат і компонентів для макетування, підсилювачів, радіодеталей, робототехніки – тобто усього того, що може зацікавити будь-якого інженера, програміста або початківця. </p>
+      </div>
+      <div class="col-md-5">
+        <img class="placeholderfeat" src="https://i.pinimg.com/originals/fc/03/d2/fc03d22c274073ea48fba192fb0440e2.jpg
+" alt="https://miychay.com/upload/iblock/7c6/7c664063ba5e6215cb3567de3330c187.jpg">
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+
+  </div><!-- /.container -->
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
